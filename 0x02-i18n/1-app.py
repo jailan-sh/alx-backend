@@ -4,12 +4,12 @@ from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
-class Config():
+class Config(object):
     """
     configure the avaliable langs in the app
     """
-    LANGUAGE = ['en', 'fr']
-    BABEL_DEFAULT_LOCAL = 'en'
+    LANGUAGES = ['en', 'fr']
+    BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
@@ -18,7 +18,7 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-@app.route('/', strict_slash=False)
+@app.route('/')
 def homePage() -> str:
     """home page"""
     return render_template('1-index.html')
