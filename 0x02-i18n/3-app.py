@@ -23,6 +23,9 @@ def get_locale():
     """
     Select and return best language match based on supported languages
     """
+    loc = request.args.get('locale')
+    if loc in app.config['LANGUAGES']:
+        return loc
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
